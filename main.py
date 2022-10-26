@@ -5,43 +5,59 @@ def cli():
     # infinity loop to ask user input
     while True:
         print("> ", end = "")
-        # get user input
-        user_input = input()
-        # split user input
-        user_input = user_input.split(" ")
-        # check user input
-        if user_input[0] == "exit":
+        try:
+            command = input()
+        except KeyboardInterrupt:
+            # handle ctrl + c
+            print()
+            continue
+        except EOFError:
+            # handle ctrl + d
+            print()
             break
-        elif user_input[0] == "help":
+
+        # split command to get command and arguments
+        commands = command.split()
+        # check if command is empty
+        if len(commands) == 0:
+            continue
+        # get command
+        command = commands[0]
+        # get arguments
+        arguments = commands[1:]
+
+        # check command
+        if command == "exit":
+            break
+        elif command == "help":
             print("help - show this message")
             print("exit - exit program")
             print("set - set elements")
             print("power - show power set")
             print("combinations - show combinations")
             print("permutations - show permutations")
-        elif user_input[0] == "set":
-            elements = user_input[1:]
-            your_combinations = YourCombinations(elements)
-        elif user_input[0] == "power":
+        elif command == "set":
+            your_combinations = YourCombinations(arguments)
+        elif command == "power":
             # show power set
             print("Power set:")
             for i in your_combinations.powerSet():
                 print(i)
-        elif user_input[0] == "combinations":
+        elif command == "combinations":
             # show combinations
-            print("Combinations size {} with repetition:".format(user_input[1]))
-            for i in your_combinations.combinations(int(user_input[1]), True):
+            print("Combinations size {} with repetition:".format(arguments[0]))
+            for i in your_combinations.combinations(int(arguments[0]), True):
                 print(i)
-            print("Combinations size {} without repetition:".format(user_input[1]))
-            for i in your_combinations.combinations(int(user_input[1])):
+            print("Combinations size {} without repetition:".format(arguments[0]))
+            for i in your_combinations.combinations(int(arguments[0])):
                 print(i)
-        elif user_input[0] == "permutations":
+        elif command == "permutations":
             # show permutations
-            print("Permutations size {} with repetition:".format(user_input[1]))
-            for i in your_combinations.permutations(int(user_input[1]), True):
+            print("Permutations size {} with repetition:".format(arguments[0]))
+            for i in your_combinations.permutations(int(arguments[0]), True):
                 print(i)
-            print("Permutations size {} without repetition:".format(user_input[1]))
-            for i in your_combinations.permutations(int(user_input[1])):
+            print("Permutations size {} without repetition:".format(arguments[0]))
+            for i in your_combinations.permutations(int(arguments[0])):
                 print(i)
         else:
             print("Unknown command. Type 'help' to show help message.")
