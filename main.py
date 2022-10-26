@@ -5,6 +5,11 @@ def cli():
     # infinity loop to ask user input
     while True:
         print("> ", end = "")
+        # handle up and down key
+        # to get previous and next command
+        # from history
+        # up: \x1b[A
+        # down: \x1b[B
         try:
             command = input()
         except KeyboardInterrupt:
