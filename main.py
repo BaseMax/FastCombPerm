@@ -81,51 +81,51 @@ def cli():
             print(len(your_combinations.powerSet()))
 
         # Combinations with repeat
-        elif command == "list combinations with repeat":
+        elif command.startswith("list combinations with repeat"):
             for i in your_combinations.combinations(int(arguments[0]), True):
                 print(i)
-        elif command == "save combinations with repeat":
+        elif command.startswith("save combinations with repeat"):
             file = open("combinations_with_repeat.txt", "w")
             file.write(str(your_combinations.combinations(int(arguments[0]), True)))
             file.close()
             print("Saved to combinations_with_repeat.txt")
-        elif command == "count combinations with repeat":
+        elif command.startswith("count combinations with repeat"):
             print(len(your_combinations.combinations(int(arguments[0]), True)))
 
         # Combinations without repeat
-        elif command == "list combinations without repeat":
+        elif command.startswith("list combinations without repeat"):
             for i in your_combinations.combinations(int(arguments[0])):
                 print(i)
-        elif command == "save combinations without repeat":
+        elif command.startswith("save combinations without repeat"):
             file = open("combinations_without_repeat.txt", "w")
             file.write(str(your_combinations.combinations(int(arguments[0]))))
             file.close()
             print("Saved to combinations_without_repeat.txt")
-        elif command == "count combinations without repeat":
+        elif command.startswith("count combinations without repeat"):
             print(len(your_combinations.combinations(int(arguments[0]))))
 
         # Permutations with repeat
-        elif command == "list permutations with repeat":
+        elif command.startswith("list permutations with repeat"):
             for i in your_combinations.permutations(int(arguments[0]), True):
                 print(i)
-        elif command == "save permutations with repeat":
+        elif command.startswith("save permutations with repeat"):
             file = open("permutations_with_repeat.txt", "w")
             file.write(str(your_combinations.permutations(int(arguments[0]), True)))
             file.close()
             print("Saved to permutations_with_repeat.txt")
-        elif command == "count permutations with repeat":
+        elif command.startswith("count permutations with repeat"):
             print(len(your_combinations.permutations(int(arguments[0]), True)))
 
         # Permutations without repeat
-        elif command == "list permutations without repeat":
+        elif command.startswith("list permutations without repeat"):
             for i in your_combinations.permutations(int(arguments[0]), False):
                 print(i)
-        elif command == "save permutations without repeat":
+        elif command.startswith("save permutations without repeat"):
             file = open("permutations_without_repeat.txt", "w")
             file.write(str(your_combinations.permutations(int(arguments[0]), False)))
             file.close()
             print("Saved to permutations_without_repeat.txt")
-        elif command == "count permutations without repeat":
+        elif command.startswith("count permutations without repeat"):
             print(len(your_combinations.permutations(int(arguments[0]), False)))
 
         else:
