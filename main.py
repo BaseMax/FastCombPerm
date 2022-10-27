@@ -35,6 +35,7 @@ def cli():
             break
         elif command == "help":
             print("help - show this message")
+            print("version - show version")
             print("exit - exit program")
             print("set ... ... ...")
             print("")
@@ -62,6 +63,8 @@ def cli():
             print("\tlist permutations without repeat <n>")
             print("\tsave permutations without repeat <n>")
             print("\tcount permutations without repeat <n>")
+        elif command == "version":
+            print("1.0.0")
         elif command == "set":
             arguments = commands[1:]
             your_combinations = YourCombinations(arguments)
