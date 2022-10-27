@@ -201,6 +201,8 @@ def cli():
 # main function
 def main():
     # show help message
+    print("Fast Combinations and Permutations Calculator - version 1.0.0")
+    print("")
     print("Type 'help' to show help message.")
     # call cli
     cli()
