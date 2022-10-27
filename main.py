@@ -21,8 +21,9 @@ def cli():
             print()
             break
 
+        commands_str = command
         # split command to get command and arguments
-        commands = command.split()
+        commands = commands_str.split()
         # check if command is empty
         if len(commands) == 0:
             continue
@@ -62,29 +63,71 @@ def cli():
             print("\tlist permutations without repeat ...")
             print("\tsave permutations without repeat ...")
             print("\tcount permutations without repeat ...")
-        elif command == "set":
+
+        # Power
+        elif commands_str.startswith("list power"):
             your_combinations = YourCombinations(arguments)
-        elif command == "power":
-            # show power set
-            print("Power set:")
             for i in your_combinations.powerSet():
                 print(i)
-        elif command == "combinations":
-            # show combinations
-            print("Combinations size {} with repetition:".format(arguments[0]))
+        elif commands_str.startswith("save power"):
+            your_combinations = YourCombinations(arguments)
+            file = open("power_set.txt", "w")
+            file.write(str(your_combinations.powerSet()))
+            file.close()
+            print("Saved to power_set.txt")
+        elif commands_str.startswith("count power"):
+            your_combinations = YourCombinations(arguments)
+            print("Count Power set:")
+            print(len(your_combinations.powerSet()))
+
+        # Combinations with repeat
+        elif command == "list combinations with repeat":
             for i in your_combinations.combinations(int(arguments[0]), True):
                 print(i)
-            print("Combinations size {} without repetition:".format(arguments[0]))
+        elif command == "save combinations with repeat":
+            file = open("combinations_with_repeat.txt", "w")
+            file.write(str(your_combinations.combinations(int(arguments[0]), True)))
+            file.close()
+            print("Saved to combinations_with_repeat.txt")
+        elif command == "count combinations with repeat":
+            print(len(your_combinations.combinations(int(arguments[0]), True)))
+
+        # Combinations without repeat
+        elif command == "list combinations without repeat":
             for i in your_combinations.combinations(int(arguments[0])):
                 print(i)
-        elif command == "permutations":
-            # show permutations
-            print("Permutations size {} with repetition:".format(arguments[0]))
+        elif command == "save combinations without repeat":
+            file = open("combinations_without_repeat.txt", "w")
+            file.write(str(your_combinations.combinations(int(arguments[0]))))
+            file.close()
+            print("Saved to combinations_without_repeat.txt")
+        elif command == "count combinations without repeat":
+            print(len(your_combinations.combinations(int(arguments[0]))))
+
+        # Permutations with repeat
+        elif command == "list permutations with repeat":
             for i in your_combinations.permutations(int(arguments[0]), True):
                 print(i)
-            print("Permutations size {} without repetition:".format(arguments[0]))
-            for i in your_combinations.permutations(int(arguments[0])):
+        elif command == "save permutations with repeat":
+            file = open("permutations_with_repeat.txt", "w")
+            file.write(str(your_combinations.permutations(int(arguments[0]), True)))
+            file.close()
+            print("Saved to permutations_with_repeat.txt")
+        elif command == "count permutations with repeat":
+            print(len(your_combinations.permutations(int(arguments[0]), True)))
+
+        # Permutations without repeat
+        elif command == "list permutations without repeat":
+            for i in your_combinations.permutations(int(arguments[0]), False):
                 print(i)
+        elif command == "save permutations without repeat":
+            file = open("permutations_without_repeat.txt", "w")
+            file.write(str(your_combinations.permutations(int(arguments[0]), False)))
+            file.close()
+            print("Saved to permutations_without_repeat.txt")
+        elif command == "count permutations without repeat":
+            print(len(your_combinations.permutations(int(arguments[0]), False)))
+
         else:
             print("Unknown command. Type 'help' to show help message.")
 
