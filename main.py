@@ -36,110 +36,153 @@ def cli():
         elif command == "help":
             print("help - show this message")
             print("exit - exit program")
-
-            print("Power Set:")
-            print("\tlist power ...")
-            print("\tsave power ...")
-            print("\tcount power ...")
+            print("set ... ... ...")
             print("")
 
-            print("Combinations:")
-            print("\tlist combinations with repeat ...")
-            print("\tsave combinations with repeat ...")
-            print("\tcount combinations with repeat ...")
+            print("Power Set:")
+            print("\tlist power")
+            print("\tsave power")
+            print("\tcount power")
 
-            print("\tlist combinations without repeat ...")
-            print("\tsave combinations without repeat ...")
-            print("\tcount combinations without repeat ...")
+            print("Combinations:")
+            print("\tlist combinations with repeat <n>")
+            print("\tsave combinations with repeat <n>")
+            print("\tcount combinations with repeat <n>")
+
+            print("\tlist combinations without repeat <n>")
+            print("\tsave combinations without repeat <n>")
+            print("\tcount combinations without repeat <n>")
             print("")
 
             print("Permutations:")
-            print("\tlist permutations with repeat ...")
-            print("\tsave permutations with repeat ...")
-            print("\tcount permutations with repeat ...")
+            print("\tlist permutations with repeat <n>")
+            print("\tsave permutations with repeat <n>")
+            print("\tcount permutations with repeat <n>")
 
-            print("\tlist permutations without repeat ...")
-            print("\tsave permutations without repeat ...")
-            print("\tcount permutations without repeat ...")
+            print("\tlist permutations without repeat <n>")
+            print("\tsave permutations without repeat <n>")
+            print("\tcount permutations without repeat <n>")
+        elif command == "set":
+            arguments = commands[1:]
+            your_combinations = YourCombinations(arguments)
 
         # Power
         elif commands_str.startswith("list power"):
-            arguments = commands_str[len("list power"):].strip()
-            your_combinations = YourCombinations(arguments)
             for i in your_combinations.powerSet():
                 print(i)
         elif commands_str.startswith("save power"):
-            arguments = commands_str[len("save power"):].strip()
-            your_combinations = YourCombinations(arguments)
             file = open("power_set.txt", "w")
             file.write(str(your_combinations.powerSet()))
             file.close()
             print("Saved to power_set.txt")
         elif commands_str.startswith("count power"):
-            arguments = commands_str[len("count power"):].strip()
-            your_combinations = YourCombinations(arguments)
             print("Count Power set:")
             print(len(your_combinations.powerSet()))
 
         # Combinations with repeat
-        elif commands_str.startswith("list combinations with repeat"):a
-            arguments = commands_str[len("list combinations with repeat"):].strip()
-            for i in your_combinations.combinations(int(arguments[0]), True):
+        elif commands_str.startswith("list combinations with repeat"):
+            argument_length = commands_str[len("list combinations with repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+
+            for i in your_combinations.combinations(int(argument_length), True):
                 print(i)
         elif commands_str.startswith("save combinations with repeat"):
-            arguments = commands_str[len("save combinations with repeat"):].strip()
+            argument_length = commands_str[len("save combinations with repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+
             file = open("combinations_with_repeat.txt", "w")
-            file.write(str(your_combinations.combinations(int(arguments[0]), True)))
+            file.write(str(your_combinations.combinations(int(argument_length), True)))
             file.close()
             print("Saved to combinations_with_repeat.txt")
         elif commands_str.startswith("count combinations with repeat"):
-            arguments = commands_str[len("count combinations with repeat"):].strip()
-            print(len(your_combinations.combinations(int(arguments[0]), True)))
+            argument_length = commands_str[len("count combinations with repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+
+            print(len(your_combinations.combinations(int(argument_length), True)))
 
         # Combinations without repeat
         elif commands_str.startswith("list combinations without repeat"):
-            arguments = commands_str[len("list combinations without repeat"):].strip()
-            for i in your_combinations.combinations(int(arguments[0])):
+            argument_length = commands_str[len("list combinations without repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+
+            for i in your_combinations.combinations(int(argument_length)):
                 print(i)
         elif commands_str.startswith("save combinations without repeat"):
-            arguments = commands_str[len("save combinations without repeat"):].strip()
+            argument_length = commands_str[len("save combinations without repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+
             file = open("combinations_without_repeat.txt", "w")
-            file.write(str(your_combinations.combinations(int(arguments[0]))))
+            file.write(str(your_combinations.combinations(int(argument_length))))
             file.close()
             print("Saved to combinations_without_repeat.txt")
         elif commands_str.startswith("count combinations without repeat"):
-            arguments = commands_str[len("count combinations without repeat"):].strip()
-            print(len(your_combinations.combinations(int(arguments[0]))))
+            argument_length = commands_str[len("count combinations without repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+
+            print(len(your_combinations.combinations(int(argument_length))))
 
         # Permutations with repeat
         elif commands_str.startswith("list permutations with repeat"):
-            arguments = commands_str[len("list permutations with repeat"):].strip()
-            for i in your_combinations.permutations(int(arguments[0]), True):
+            argument_length = commands_str[len("list permutations with repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+
+            for i in your_combinations.permutations(int(argument_length), True):
                 print(i)
         elif commands_str.startswith("save permutations with repeat"):
-            arguments = commands_str[len("save permutations with repeat"):].strip()
+            argument_length = commands_str[len("save permutations with repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+
             file = open("permutations_with_repeat.txt", "w")
-            file.write(str(your_combinations.permutations(int(arguments[0]), True)))
+            file.write(str(your_combinations.permutations(int(argument_length), True)))
             file.close()
             print("Saved to permutations_with_repeat.txt")
         elif commands_str.startswith("count permutations with repeat"):
-            arguments = commands_str[len("count permutations with repeat"):].strip()
-            print(len(your_combinations.permutations(int(arguments[0]), True)))
+            argument_length = commands_str[len("count permutations with repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+
+            print(len(your_combinations.permutations(int(argument_length), True)))
 
         # Permutations without repeat
         elif commands_str.startswith("list permutations without repeat"):
-            arguments = commands_str[len("list permutations without repeat"):].strip()
-            for i in your_combinations.permutations(int(arguments[0]), False):
+            argument_length = commands_str[len("list permutations without repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+            for i in your_combinations.permutations(int(arguments), False):
                 print(i)
         elif commands_str.startswith("save permutations without repeat"):
-            arguments = commands_str[len("save permutations without repeat"):].strip()
+            argument_length = commands_str[len("save permutations without repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
             file = open("permutations_without_repeat.txt", "w")
-            file.write(str(your_combinations.permutations(int(arguments[0]), False)))
+            file.write(str(your_combinations.permutations(int(arguments), False)))
             file.close()
             print("Saved to permutations_without_repeat.txt")
         elif commands_str.startswith("count permutations without repeat"):
-            arguments = commands_str[len("count permutations without repeat"):].strip()
-            print(len(your_combinations.permutations(int(arguments[0]), False)))
+            argument_length = commands_str[len("count permutations without repeat"):].strip()
+            if not argument_length.isdigit() or int(argument_length) <= 0:
+                print("Invalid argument")
+                continue
+            print(len(your_combinations.permutations(int(arguments), False)))
 
         else:
             print("Unknown command. Type 'help' to show help message.")

@@ -1,0 +1,1 @@
+<generator object YourCombinations.powerSet at 0x000001B909C00BA0>
