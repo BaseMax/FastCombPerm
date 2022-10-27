@@ -11,7 +11,7 @@ def cli():
         # up: \x1b[A
         # down: \x1b[B
         try:
-            command = input()
+            command = input().strip()
         except KeyboardInterrupt:
             # handle ctrl + c
             print()
@@ -37,10 +37,31 @@ def cli():
         elif command == "help":
             print("help - show this message")
             print("exit - exit program")
-            print("set - set elements")
-            print("power - show power set")
-            print("combinations - show combinations")
-            print("permutations - show permutations")
+
+            print("Power Set:")
+            print("\tlist power ...")
+            print("\tsave power ...")
+            print("\tcount power ...")
+            print("")
+
+            print("Combinations:")
+            print("\tlist combinations with repeat ...")
+            print("\tsave combinations with repeat ...")
+            print("\tcount combinations with repeat ...")
+
+            print("\tlist combinations without repeat ...")
+            print("\tsave combinations without repeat ...")
+            print("\tcount combinations without repeat ...")
+            print("")
+
+            print("Permutations:")
+            print("\tlist permutations with repeat ...")
+            print("\tsave permutations with repeat ...")
+            print("\tcount permutations with repeat ...")
+
+            print("\tlist permutations without repeat ...")
+            print("\tsave permutations without repeat ...")
+            print("\tcount permutations without repeat ...")
         elif command == "set":
             your_combinations = YourCombinations(arguments)
         elif command == "power":
