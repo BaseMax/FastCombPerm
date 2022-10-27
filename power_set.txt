@@ -1,1 +1,8 @@
-<generator object YourCombinations.powerSet at 0x000001B909C00BA0>
+[]
+['a']
+['b']
+['a', 'b']
+['c']
+['a', 'c']
+['b', 'c']
+['a', 'b', 'c']
