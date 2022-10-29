@@ -49,6 +49,7 @@ def cli():
             print("\tlist combinations with repeat <n>")
             print("\tsave combinations with repeat <n>")
             print("\tcount combinations with repeat <n>")
+            print("")
 
             print("\tlist combinations without repeat <n>")
             print("\tsave combinations without repeat <n>")
