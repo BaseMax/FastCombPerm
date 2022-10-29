@@ -60,6 +60,7 @@ def cli():
             print("\tlist permutations with repeat <n>")
             print("\tsave permutations with repeat <n>")
             print("\tcount permutations with repeat <n>")
+            print("")
 
             print("\tlist permutations without repeat <n>")
             print("\tsave permutations without repeat <n>")
