@@ -44,6 +44,7 @@ def cli():
             print("\tlist power")
             print("\tsave power")
             print("\tcount power")
+            print("")
 
             print("Combinations:")
             print("\tlist combinations with repeat <n>")
