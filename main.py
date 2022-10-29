@@ -82,7 +82,10 @@ def cli():
             print("Saved to power_set.txt")
         elif commands_str.startswith("count power"):
             print("Count Power set:")
-            print(len(your_combinations.powerSet()))
+            l = 0
+            for i in your_combinations.powerSet():
+                l = l + 1
+            print(l)
 
         # Combinations with repeat
         elif commands_str.startswith("list combinations with repeat"):
@@ -111,7 +114,11 @@ def cli():
                 print("Invalid argument")
                 continue
 
-            print(len(your_combinations.combinations(int(argument_length), True)))
+            # print(len(your_combinations.combinations(int(argument_length), True)))
+            l = 0
+            for i in your_combinations.combinations(int(argument_length), True):
+                l = l + 1
+            print(l)
 
         # Combinations without repeat
         elif commands_str.startswith("list combinations without repeat"):
@@ -140,7 +147,11 @@ def cli():
                 print("Invalid argument")
                 continue
 
-            print(len(your_combinations.combinations(int(argument_length))))
+            # print(len(your_combinations.combinations(int(argument_length))))
+            l = 0
+            for i in your_combinations.combinations(int(argument_length), False):
+                l = l + 1
+            print(l)
 
         # Permutations with repeat
         elif commands_str.startswith("list permutations with repeat"):
@@ -169,7 +180,11 @@ def cli():
                 print("Invalid argument")
                 continue
 
-            print(len(your_combinations.permutations(int(argument_length), True)))
+            # print(len(your_combinations.permutations(int(argument_length), True)))
+            l = 0
+            for i in your_combinations.permutations(int(argument_length), True):
+                l = l + 1
+            print(l)
 
         # Permutations without repeat
         elif commands_str.startswith("list permutations without repeat"):
@@ -177,7 +192,8 @@ def cli():
             if not argument_length.isdigit() or int(argument_length) <= 0:
                 print("Invalid argument")
                 continue
-            for i in your_combinations.permutations(int(arguments), False):
+
+            for i in your_combinations.permutations(int(argument_length), False):
                 print(i)
         elif commands_str.startswith("save permutations without repeat"):
             argument_length = commands_str[len("save permutations without repeat"):].strip()
@@ -196,7 +212,12 @@ def cli():
             if not argument_length.isdigit() or int(argument_length) <= 0:
                 print("Invalid argument")
                 continue
-            print(len(your_combinations.permutations(int(arguments), False)))
+
+            # print(len(your_combinations.permutations(int(argument_length), False)))
+            l = 0
+            for i in your_combinations.permutations(int(argument_length), False):
+                l = l + 1
+            print(l)
 
         else:
             print("Unknown command. Type 'help' to show help message.")
