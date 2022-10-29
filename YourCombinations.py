@@ -1,3 +1,9 @@
+#
+# Author: Max Base
+# Date: 2022/10/26
+# Repository: https://github.com/BaseMax/YourCombinationsPython
+#
+
 class YourCombinations:
 	def __init__(self, elements):
 		self.elements = elements
