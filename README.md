@@ -24,6 +24,7 @@ Power Set:
         list power
         save power
         count power
+
 Combinations:
         list combinations with repeat <n>
         save combinations with repeat <n>
